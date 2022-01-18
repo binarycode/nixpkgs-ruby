@@ -7,5 +7,5 @@
     ""
   ];
   url = https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.3.tar.gz;
-  sha256 = "0000000000000000000000000000000000000000000000000000000000000000";
+  sha256 = "sha256-NYaGHLLfVpcCh/D9g/J0vZIFiHLYMNFVcLNt738akqw=";
 }
