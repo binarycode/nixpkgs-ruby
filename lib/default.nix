@@ -1,5 +1,5 @@
 { stdenv, buildPackages, lib, fetchurl, fetchpatch, fetchFromSavannah
-, fetchFromGitHub, zlib, openssl, gdbm, ncurses, readline, groff, libyaml
+, fetchFromGitHub, zlib, openssl_1_0_2, gdbm, ncurses, readline, groff, libyaml
 , libffi, autoreconfHook, bison, autoconf, darwin ? null, buildEnv, bundler
 , bundix, Foundation }@args:
 
@@ -24,7 +24,7 @@ let
 
       self = lib.makeOverridable ({ stdenv, buildPackages, lib, fetchurl
         , fetchpatch, fetchFromSavannah, fetchFromGitHub, useRailsExpress ? true
-        , zlib, zlibSupport ? true, openssl, opensslSupport ? true, gdbm
+        , zlib, zlibSupport ? true, openssl_1_0_2, opensslSupport ? true, gdbm
         , gdbmSupport ? true, ncurses, readline, cursesSupport ? true, groff
         , docSupport ? false, libyaml, yamlSupport ? true, libffi
         , fiddleSupport ? true, autoreconfHook, bison, autoconf, darwin ? null
@@ -43,7 +43,7 @@ let
             [ buildPackages.ruby ];
           buildInputs = (op fiddleSupport libffi)
             ++ (ops cursesSupport [ ncurses readline ]) ++ (op docSupport groff)
-            ++ (op zlibSupport zlib) ++ (op opensslSupport openssl)
+            ++ (op zlibSupport zlib) ++ (op opensslSupport openssl_1_0_2)
             ++ (op gdbmSupport gdbm) ++ (op yamlSupport libyaml)
             # Looks like ruby fails to build on darwin without readline even if curses
             # support is not enabled, so add readline to the build inputs if curses
